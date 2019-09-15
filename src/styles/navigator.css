@@ -1,0 +1,11 @@
+.navigator {
+    left: 0;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    top: 85%;
+}
+
+.fab-but {
+    margin: 5px !important;
+}

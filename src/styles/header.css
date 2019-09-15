@@ -1,0 +1,70 @@
+.header {
+    #background-color: #191919;
+    align-items: center;
+    left: 0;
+    right: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    color: white;
+    z-index: 100000;
+    height: 100px;
+}
+
+.header-items {
+    margin: 44px 64px 0px 64px;
+    width: 100%;
+}
+
+.header-container {
+    width: 100%;
+    position: absolute;
+    height: 13%;
+    top: 0px;
+    z-index: 1000;
+    background-color: #191919;
+}
+
+.header-modal-enter {
+    opacity: 0;
+    animation-name: header-bg-anime;
+    animation-duration: 300ms;
+
+}
+
+@keyframes header-bg-anime {
+    from {
+        top: -10vh;
+    }
+    to {
+        top: 0vh;
+    }
+}
+
+.header-modal-enter-active {
+    opacity: 1;
+    transition: all 300ms;
+}
+
+.header-modal-enter-done {
+}
+
+.header-modal-exit {
+    opacity: 1;
+    animation-name: header-bg-anime-exit;
+    animation-duration: 300ms;
+}
+
+@keyframes header-bg-anime-exit {
+    from {
+        top: 0vh;
+    }
+    to {
+        top: -10vh;
+    }
+}
+.header-modal-exit-active {
+    opacity: 0;
+    transition: all 300ms;
+}
