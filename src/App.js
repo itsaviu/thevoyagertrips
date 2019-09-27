@@ -1,18 +1,25 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './styles/App.css';
 import ImageContainer from "./components/ImageContainer";
 import Headers from "./components/Headers";
 import Destinations from "./components/Destinations";
 import Navigator from "./components/Navigator";
-import VagamonHill from './image/vagamon-hill.jpg';
-import AlappuzhaBoat from './image/alapuzha_boat.jpg';
+import {When, Otherwise} from "react-control-statements";
 
 const App = () => {
 
-    const [data, setData] = useState([
-        {index: 0, url: VagamonHill, titleCard: "Vagamon"},
-        {index: 1, url: AlappuzhaBoat, titleCard: "Alappuzha"}
-    ]);
+    useEffect(() => {
+        fetch("https://7shau56ywf.execute-api.us-east-2.amazonaws.com/Dev/voyager")
+            .then(res => res.json())
+            .then((result) => {
+                console.log(result);
+                setData(result);
+            })
+            .catch((error) => console.log(error))
+    }, []);
+
+    const [data, setData] = useState([]);
+
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const nextIndex = () => {
@@ -34,14 +41,19 @@ const App = () => {
 
         console.log(_index);
     };
-
+    console.log(data);
     return (
         <div className="App">
-            <ImageContainer data={data[currentIndex]}/>
-            <Headers/>
-            <Destinations data={data[currentIndex]}/>
-            <Navigator nextIndex={() => nextIndex()} backIndex={() => backIndex()}/>
-            <div className={'signature'}>aS</div>
+            <When condition={data.length > 0}>
+                <ImageContainer index={currentIndex} data={data[currentIndex]}/>
+                <Headers/>
+                <Destinations data={data[currentIndex]}/>
+                <Navigator nextIndex={() => nextIndex()} backIndex={() => backIndex()}/>
+                <div className={'signature'}>aS</div>
+            </When>
+            <Otherwise>
+
+            </Otherwise>
         </div>
     );
 }

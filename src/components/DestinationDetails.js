@@ -1,15 +1,11 @@
 import React from 'react';
-import CSSTransition from "react-transition-group/CSSTransition";
 import {Close} from "@material-ui/icons";
-import VagamonEb from "../image/vagamon-eb.jpg";
-import VagamonHouse from "../image/vagamon-house.jpg";
-import VagamonMistyHill from "../image/vagamon-misty-hill.jpg";
-import VagamonPlains from "../image/vagamon-plains.jpg";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import Grid from "@material-ui/core/Grid";
 import {withStyles} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
+import details from "./detailsJson";
 
 const styles = theme => ({
     title: {
@@ -34,121 +30,118 @@ const DestinationDetails = (props) => {
         props.toggleDetailsModal();
     };
 
-    const images = [VagamonEb, VagamonHouse, VagamonMistyHill, VagamonPlains];
+    let destinationDetails = details.find(d => d.id === props.detailId);
 
     return (
-        <CSSTransition
-            in={props.showDetailsPage}
-            timeout={300}
-            classNames="destination-modal"
-            unmountOnExit
-        >
-            <div className={"destination-container"}>
-                <div className={"destination-details-content"}>
-                    <div className={"modal-close"}><Close className={"close-button"}
-                                                          onClick={() => toggleDetailsModal()}/></div>
-                    <Grid container style={{height: "130px"}}>
-                        <Grid item xs={3}>
-                            <div style={{
-                                paddingLeft: "3px",
-                                fontWeight: "bold",
-                                color: "#585858"
-                            }}>
-                                വാഗമൺ
-                            </div>
-                            <div style={{fontSize: "30px", fontWeight: "bold", color: "#3c3738"}}>
-                                Vagamon
-                            </div>
-                        </Grid>
-                        <Grid item xs={2}>
-                            <div className={classes.title}>
-                                Visited Season
-                            </div>
-                            <p className={classes.info}>
-                                Monsoon
-                            </p>
-                        </Grid>
-                        <Grid item xs={2}>
-                            <div className={classes.title}>
-                                Vacation Period
-                            </div>
-                            <p className={classes.info}>
-                                2 Days
-                            </p>
-                        </Grid>
-                        <Grid item xs={2}>
-                            <div className={classes.title}>
-                                From
-                            </div>
-                            <p className={classes.info}>
-                                Sep 7, 2019
-                            </p>
-                        </Grid>
-                        <Grid item xs={2}>
-                            <div className={classes.title}>
-                                To
-                            </div>
-                            <p className={classes.info}>
-                                Sep 9, 2019
-                            </p>
-                        </Grid>
+        <div className={"destination-container"}>
+            <div className={"destination-details-content"}>
+                <div className={"modal-close"}><Close className={"close-button"}
+                                                      onClick={() => toggleDetailsModal()}/></div>
+                <Grid container style={{height: "130px"}}>
+                    <Grid item xs={3}>
+                        <div style={{
+                            paddingLeft: "3px",
+                            fontWeight: "bold",
+                            color: "#585858"
+                        }}>
+                            {destinationDetails.destionationInfo.localName}
+                        </div>
+                        <div style={{fontSize: "30px", fontWeight: "bold", color: "#3c3738"}}>
+                            {destinationDetails.destionationInfo.destinationName}
+                        </div>
+                    </Grid>
+                    <Grid item xs={2}>
+                        <div className={classes.title}>
+                            Visited Season
+                        </div>
+                        <p className={classes.info}>
+                            {destinationDetails.destionationInfo.season}
+                        </p>
+                    </Grid>
+                    <Grid item xs={2}>
+                        <div className={classes.title}>
+                            Vacation Period
+                        </div>
+                        <p className={classes.info}>
+                            {destinationDetails.destionationInfo.period} Days
+                        </p>
+                    </Grid>
+                    <Grid item xs={2}>
+                        <div className={classes.title}>
+                            From
+                        </div>
+                        <p className={classes.info}>
+                            {destinationDetails.destionationInfo.from}
+                        </p>
+                    </Grid>
+                    <Grid item xs={2}>
+                        <div className={classes.title}>
+                            To
+                        </div>
+                        <p className={classes.info}>
+                            {destinationDetails.destionationInfo.to}
+                        </p>
+                    </Grid>
 
-                    </Grid>
-                    <Grid container>
-                        <Grid item xs={3}>
-                            <Grid container>
-                                <Grid item xs={4}>
-                                    <div style={{
-                                        fontSize: "13px",
-                                        fontWeight: "bold",
-                                        color: "#1f1f1f"
-                                    }}>
-                                        Nickname
-                                    </div>
-                                    <p style={{
-                                        fontSize: "20px",
-                                        fontFamily: "sans-serif",
-                                        color: "#777676"
-                                    }}>
-                                        The Scotland of Asia
-                                    </p>
-                                </Grid>
-                                <Grid item xs={8}>
-                                    <p style={{
-                                        float: "right",
-                                        paddingRight: "48px",
-                                        paddingTop: "22px",
-                                        fontSize: "14px",
-                                        color: "#777676"
-                                    }}>
-                                        19° C Cold
-                                    </p>
-                                </Grid>
+                </Grid>
+                <Grid container>
+                    <Grid item xs={3}>
+                        <Grid container>
+                            <Grid item xs={4}>
+                                <div style={{
+                                    fontSize: "13px",
+                                    fontWeight: "bold",
+                                    color: "#1f1f1f"
+                                }}>
+                                    Nickname
+                                </div>
+                                <p style={{
+                                    fontSize: "20px",
+                                    fontFamily: "sans-serif",
+                                    color: "#777676"
+                                }}>
+                                    {destinationDetails.locationInfo.nickName}
+                                </p>
                             </Grid>
-                            <a href={"https://en.wikipedia.org/wiki/Vagamon"} target={"_blank"} style={{ textDecoration: "none"}}>
-                                <Button variant="outlined" color="secondary"
-                                        style={{
-                                            position: "relative",
-                                            bottom: "-44px",
-                                            width: "200px"
-                                        }}>
-                                    More Info
-                                </Button>
-                            </a>
+                            <Grid item xs={8}>
+                                <p style={{
+                                    float: "right",
+                                    paddingRight: "48px",
+                                    paddingTop: "22px",
+                                    fontSize: "14px",
+                                    color: "#777676"
+                                }}>
+                                    {destinationDetails.locationInfo.temperature}
+                                </p>
+                            </Grid>
                         </Grid>
-                        {images.map(image =>
-                            (<Grid item xs={2}>
-                                <Card style={{maxWidth: "220px"}}>
-                                    <CardMedia
-                                        style={{height: "200px"}}
-                                        image={image}
-                                    />
-                                </Card>
-                            </Grid>))}
+                        <a href={destinationDetails.locationInfo.moreInfo} target={"_blank"}
+                           style={{textDecoration: "none"}}>
+                            <Button variant="outlined" color="secondary"
+                                    style={{
+                                        position: "relative",
+                                        bottom: "-44px",
+                                        width: "200px"
+                                    }}>
+                                More Info
+                            </Button>
+                        </a>
                     </Grid>
+                    {destinationDetails.images.map(image =>
+                        (<Grid item xs={2}>
+                            <Card style={{maxWidth: "220px"}}>
+                                <CardMedia
+                                    style={{height: "200px"}}
+                                    image={image}
+                                />
+                            </Card>
+                        </Grid>))}
+                </Grid>
+                <div style={{borderColor: "black"}}>
+
                 </div>
             </div>
-        </CSSTransition>
+        </div>
     );
 };
 
