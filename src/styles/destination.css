@@ -35,3 +35,13 @@
     border: 2px solid white !important;
     padding: 5px 38px !important;
 }
+
+@media only screen and (max-width: 600px) {
+    .destinations {
+        margin-top: -300px;
+    }
+
+    .destinations-content {
+        font-size: calc(50px + 18 * ((100vw - 420px) / 860));
+    }
+}

@@ -1,5 +1,4 @@
 .header {
-    #background-color: #191919;
     align-items: center;
     left: 0;
     right: 0;
@@ -67,4 +66,10 @@
 .header-modal-exit-active {
     opacity: 0;
     transition: all 300ms;
+}
+
+@media only screen and (max-width: 370px) {
+    .header {
+        display: none;
+    }
 }

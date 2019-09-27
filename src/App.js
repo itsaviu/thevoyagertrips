@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
-import './styles/App.css';
 import ImageContainer from "./components/ImageContainer";
 import Headers from "./components/Headers";
 import Destinations from "./components/Destinations";
 import Navigator from "./components/Navigator";
 import {When, Otherwise} from "react-control-statements";
+import FooterDetail from "./components/FooterDetail";
 
 const App = () => {
 
@@ -41,7 +41,7 @@ const App = () => {
 
         console.log(_index);
     };
-    console.log(data);
+
     return (
         <div className="App">
             <When condition={data.length > 0}>
@@ -49,10 +49,11 @@ const App = () => {
                 <Headers/>
                 <Destinations data={data[currentIndex]}/>
                 <Navigator nextIndex={() => nextIndex()} backIndex={() => backIndex()}/>
+                <FooterDetail data={data[currentIndex]}/>
                 <div className={'signature'}>aS</div>
             </When>
             <Otherwise>
-
+                Loading !
             </Otherwise>
         </div>
     );
