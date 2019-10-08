@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import Bg from "../image/bg.jpg"
 import { When, Otherwise } from "react-control-statements";
 
 const ImageContainer = (props) => {
@@ -10,20 +11,17 @@ const ImageContainer = (props) => {
     }
 
     const isLoaded = () => {
-        console.log("Loaded...");
         setLoaderMeta({...loaderMeta, loaded: true});
     };
 
-    const isMinifiedLoaded = () => {
-        console.log("Minified Loaded...");
-    };
 
     console.log(props);
 
     return (
         <div className={"container"}>
+            <img src={Bg} className={"image"}/>
             <When condition={!loaderMeta.loaded}>
-                <img src={props.data.minified} onLoad={() => isMinifiedLoaded()} className={"image image-blur"}/>
+                <img src={props.data.minified} className={"image image-blur"}/>
             </When>
             <Otherwise>
                 <img  src={props.data.url} onLoad={() => isLoaded()} className={`${loaderMeta.loaded? "" : "display-none"} image`}/>

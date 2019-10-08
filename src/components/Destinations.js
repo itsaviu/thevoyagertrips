@@ -28,7 +28,7 @@ const Destinations = (props) => {
                 classNames="destination-modal"
                 unmountOnExit
             >
-                <DestinationDetails detailId={props.data.id} toggleDetailsModal={() => toggleDetailsModal()}/>
+                <DestinationDetails content={props.data.content} detailId={props.data.id} toggleDetailsModal={() => toggleDetailsModal()}/>
             </CSSTransition>
             <HeaderOverlay showDetailsPage={showDetailsPage}/>
         </div>

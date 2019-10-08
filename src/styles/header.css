@@ -32,6 +32,21 @@
 
 }
 
+
+.logo-container {
+    text-align: center;
+    font-family: serif;
+    letter-spacing: 4px;
+}
+
+.logo {
+    font-size: 21px;
+}
+
+.logo-subtitle {
+    opacity: .5;
+}
+
 @keyframes header-bg-anime {
     from {
         top: -10vh;
@@ -71,5 +86,19 @@
 @media only screen and (max-width: 370px) {
     .header {
         display: none;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    .hide-in-mobile {
+        display: none;
+    }
+
+    .logo {
+        font-size: 16px;
+    }
+
+    .logo-subtitle {
+        font-size: 13px;
     }
 }

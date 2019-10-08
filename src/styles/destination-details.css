@@ -66,3 +66,15 @@
 .destination-details-content {
     margin: 60px;
 }
+
+
+@media only screen and (max-width: 600px) {
+
+    .destination-details-content {
+        margin: 20px;
+    }
+
+    .modal-close {
+        right: 30px;
+    }
+}
