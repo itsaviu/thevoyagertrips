@@ -7,7 +7,7 @@
 .idea/
 # testing
 /coverage
-
+*.sh
 # production
 /build
 

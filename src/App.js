@@ -3,7 +3,7 @@ import ImageContainer from "./components/ImageContainer";
 import Headers from "./components/Headers";
 import Destinations from "./components/Destinations";
 import Navigator from "./components/Navigator";
-import {When, Otherwise} from "react-control-statements";
+import {When} from "react-control-statements";
 import FooterDetail from "./components/FooterDetail";
 
 const App = () => {
@@ -24,7 +24,7 @@ const App = () => {
 
     const nextIndex = () => {
         let _index = currentIndex + 1;
-        if (_index > data.length -1)
+        if (_index > data.length - 1)
             setCurrentIndex(0);
         else
             setCurrentIndex(_index);
@@ -52,11 +52,8 @@ const App = () => {
                 <FooterDetail data={data[currentIndex]}/>
                 <div className={'signature'}>aS</div>
             </When>
-            <Otherwise>
-                Loading !
-            </Otherwise>
         </div>
     );
-}
+};
 
 export default App;

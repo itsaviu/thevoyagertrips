@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {Close} from "@material-ui/icons";
-import details from "./detailsJson";
 import DetailWindowMode from "./DetailWindowMode";
 import DetailMobileMode from "./DetailMobileMode";
-import { If } from "react-control-statements";
+import {If} from "react-control-statements";
 
 
 const DestinationDetails = (props) => {
