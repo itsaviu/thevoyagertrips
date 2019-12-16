@@ -1,5 +1,5 @@
 `Website`
-### http://thevoaygertrip.com 
+### http://thevoyagertrip.com/
 
 
 ### `npm start`
